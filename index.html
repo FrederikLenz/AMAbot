@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AMA</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="ama-app">
+
+        <!-- =================================
+             SIDEBAR
+        ================================== -->
+
+        <aside class="sidebar">
+
+            <!-- Sidebar header -->
+            <header class="sidebar-header">
+
+                <div class="logo">
+                    <div class="logo-icon">
+                        <!-- AMA icon -->
+                    </div>
+
+                    <span class="logo-text">AMA</span>
+                </div>
+
+            </header>
+
+
+            <!-- Host profile -->
+            <section class="profile">
+
+                <div class="profile-image-wrapper">
+
+                    <img
+                        class="profile-image"
+                        src="/images/cæsar.jpg"
+                        alt="Profile picture"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- New session -->
+            <div class="sidebar-footer">
+
+                <button
+                    class="new-session-button"
+                    type="button"
+                >
+                    New session
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================
+             MAIN
+        ================================== -->
+
+        <main class="main">
+
+            <!-- Main header -->
+            <header class="main-header">
+
+                <div class="header-content">
+
+                    <h1>Ask Me Anything</h1>
+
+                    <p>No topic is off limits</p>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================
+                 CHAT
+            ================================== -->
+
+            <section class="chat">
+
+                <!--
+                    EMPTY STATE
+
+                    This is shown when there are no
+                    questions yet.
+
+                    Later in EJS this can be rendered
+                    conditionally based on the messages.
+                -->
+
+                <div class="empty-state">
+
+                    <h2>What would you like to know?</h2>
+
+                    <p>
+                        Ask anything below to get started.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================
+                     MESSAGES
+                ================================== -->
+
+                <div class="messages">
+
+                    <!--
+                        Later this area can contain
+                        dynamic EJS messages.
+
+                        Example:
+
+                        <article class="message message-user">
+                            <p>What is your background?</p>
+                        </article>
+
+                        <article class="message message-bot">
+                            <p>
+                                I started my career...
+                            </p>
+                        </article>
+                    -->
+
+                </div>
+
+
+                <!-- =================================
+                     QUESTION FORM
+                ================================== -->
+
+                <form
+                    class="question-form"
+                    action="/ask"
+                    method="POST"
+                >
+
+                    <div class="input-container">
+
+                        <textarea
+                            class="question-input"
+                            name="question"
+                            placeholder="Type your question..."
+                            rows="1"
+                        ></textarea>
+
+
+                        <button
+                            class="send-button"
+                            type="submit"
+                        >
+                            <span>Send</span>
+
+                            <span class="send-icon">
+                                ↑
+                            </span>
+                        </button>
+
+                    </div>
+
+                    <p class="input-help">
+                        Enter to send · Shift+Enter for new line
+                    </p>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,462 @@
+/* =================================
+   RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #0D0D0F;
+    color: #D5D2CE;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =================================
+   APP
+================================= */
+
+.ama-app {
+    display: flex;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+
+/* =================================
+   SIDEBAR
+================================= */
+
+.sidebar {
+    position: relative;
+
+    width: 343px;
+    height: 100vh;
+
+    flex-shrink: 0;
+
+    background-color: #101012;
+
+    border-right: 1px solid #252528;
+}
+
+
+/* =================================
+   SIDEBAR HEADER
+================================= */
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+
+    height: 104px;
+
+    padding: 0 26px;
+
+    border-bottom: 1px solid #252528;
+}
+
+
+/* Logo */
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 41px;
+    height: 41px;
+
+    margin-right: 14px;
+
+    border-radius: 10px;
+
+    background-color: #C9A96E;
+}
+
+.logo-text {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 21px;
+
+    color: #D5D2CE;
+}
+
+
+/* =================================
+   PROFILE
+================================= */
+
+.profile {
+    display: flex;
+    justify-content: center;
+
+    padding-top: 47px;
+}
+
+.profile-image-wrapper {
+    width: 139px;
+    height: 139px;
+
+    overflow: hidden;
+
+    border: 2px solid #292A30;
+    border-radius: 20px;
+
+    background-color: #19191D;
+}
+
+.profile-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =================================
+   SIDEBAR FOOTER
+================================= */
+
+.sidebar-footer {
+    position: absolute;
+
+    left: 26px;
+    right: 29px;
+    bottom: 30px;
+}
+
+
+/* =================================
+   NEW SESSION BUTTON
+================================= */
+
+.new-session-button {
+    width: 100%;
+    height: 49px;
+
+    border: 1px solid #2D2E34;
+    border-radius: 14px;
+
+    background-color: #19191D;
+
+    color: #77777F;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.new-session-button:hover {
+    border-color: #C9A96E;
+
+    color: #C9A96E;
+}
+
+
+/* =================================
+   MAIN
+================================= */
+
+.main {
+    display: flex;
+    flex-direction: column;
+
+    width: calc(100% - 343px);
+    height: 100vh;
+
+    min-width: 0;
+}
+
+
+/* =================================
+   MAIN HEADER
+================================= */
+
+.main-header {
+    display: flex;
+    align-items: center;
+
+    height: 108px;
+
+    padding: 0 35px;
+
+    border-bottom: 1px solid #252528;
+}
+
+.header-content h1 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 29px;
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    color: #D8D4CF;
+}
+
+.header-content p {
+    margin-top: 7px;
+
+    font-size: 17px;
+
+    color: #4E4E56;
+}
+
+
+/* =================================
+   CHAT
+================================= */
+
+.chat {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    min-height: 0;
+}
+
+
+/* =================================
+   EMPTY STATE
+================================= */
+
+.empty-state {
+    position: absolute;
+
+    top: 178px;
+    left: 50%;
+
+    width: 100%;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+}
+
+.empty-state h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 32px;
+    font-weight: 400;
+
+    color: #29292E;
+}
+
+.empty-state p {
+    margin-top: 22px;
+
+    font-size: 20px;
+
+    color: #37373E;
+}
+
+
+/* =================================
+   MESSAGES
+================================= */
+
+.messages {
+    width: 100%;
+    max-width: 1000px;
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    padding: 40px 30px 170px;
+
+    overflow-y: auto;
+}
+
+
+/* Individual message */
+
+.message {
+    display: flex;
+
+    margin-bottom: 28px;
+}
+
+
+/* User message */
+
+.message-user {
+    justify-content: flex-end;
+}
+
+.message-user p {
+    max-width: 70%;
+
+    padding: 13px 18px;
+
+    border-radius: 16px 16px 4px 16px;
+
+    background-color: #1C1C20;
+
+    color: #D2D0CC;
+}
+
+
+/* Bot message */
+
+.message-bot {
+    justify-content: flex-start;
+}
+
+.message-bot p {
+    max-width: 70%;
+
+    padding: 13px 18px;
+
+    border-radius: 16px 16px 16px 4px;
+
+    background-color: #151518;
+
+    color: #AAA8A5;
+}
+
+
+/* =================================
+   QUESTION FORM
+================================= */
+
+.question-form {
+    position: absolute;
+
+    left: 50%;
+    bottom: 26px;
+
+    width: min(982px, calc(100% - 80px));
+
+    transform: translateX(-50%);
+
+    text-align: center;
+}
+
+
+/* =================================
+   INPUT CONTAINER
+================================= */
+
+.input-container {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 87px;
+
+    padding: 10px 23px;
+
+    border: 1px solid #303137;
+    border-radius: 17px;
+
+    background-color: #101012;
+}
+
+
+/* =================================
+   TEXTAREA
+================================= */
+
+.question-input {
+    flex: 1;
+
+    width: 100%;
+
+    min-height: 50px;
+
+    padding: 15px 15px 15px 2px;
+
+    border: none;
+    outline: none;
+
+    resize: none;
+
+    background-color: transparent;
+
+    color: #D5D2CE;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 19px;
+}
+
+.question-input::placeholder {
+    color: #505057;
+}
+
+
+/* =================================
+   SEND BUTTON
+================================= */
+
+.send-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    width: 122px;
+    height: 49px;
+
+    border: 1px solid #C9A96E;
+    border-radius: 11px;
+
+    background-color: #C9A96E;
+
+    color: #101012;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.send-button:hover {
+    background-color: #D8BB82;
+
+    border-color: #D8BB82;
+}
+
+.send-icon {
+    font-size: 23px;
+
+    line-height: 1;
+}
+
+
+/* =================================
+   INPUT HELP
+================================= */
+
+.input-help {
+    margin-top: 12px;
+
+    font-size: 15px;
+
+    color: #29292F;
+}
