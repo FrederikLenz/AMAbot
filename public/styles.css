@@ -404,6 +404,23 @@ body {
     color: #505057;
 }
 
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.question {
+  align-self: flex-end;
+  color: #505057;
+  background-color: #C9A96E;
+}
+
+.answer {
+  align-self: flex-start;
+  color: #505057;
+  background-color: #C9A96E;
+}
 
 /* =================================
    SEND BUTTON
