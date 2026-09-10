@@ -379,7 +379,7 @@ body {
    TEXTAREA
 ================================= */
 
-.question-input {
+#question {
     flex: 1;
 
     width: 100%;
@@ -395,14 +395,12 @@ body {
 
     background-color: transparent;
 
-    color: #D5D2CE;
-
-    font-family: Arial, Helvetica, sans-serif;
+    color: #D5D2CE !important;
 
     font-size: 19px;
 }
 
-.question-input::placeholder {
+#question, label {
     color: #505057;
 }
 
