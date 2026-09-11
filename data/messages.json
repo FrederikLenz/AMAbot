@@ -1,0 +1,34 @@
+[
+  {
+    "type": "question",
+    "text": "Hvad hedder du?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Frederik. Hvad vil du ellers vide om mig?"
+  },
+  {
+    "type": "question",
+    "text": "Hvad hedder du?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Frederik. Hvad vil du ellers vide om mig?"
+  },
+  {
+    "type": "question",
+    "text": "dit navn?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Frederik. Hvad vil du ellers vide om mig?"
+  },
+  {
+    "type": "question",
+    "text": "Hvor bor du?"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg bor i Viby."
+  }
+]
