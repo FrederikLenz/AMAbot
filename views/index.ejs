@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 
 <head>
     <meta charset="UTF-8">
@@ -39,6 +39,27 @@
                 <div class="profile-image-wrapper">
                     <img class="profile-image" src="/images/cæsar.jpg" alt="Profile picture">
                 </div>
+            </section>
+
+
+            <!-- Topic stats -->
+            <section class="topic-stats">
+                <h2>Spørgsmål fordelt på emner</h2>
+
+                <ul>
+                    <li>
+                        <span>Navn</span>
+                        <span class="topic-count"><%= topicStats.navn %></span>
+                    </li>
+                    <li>
+                        <span>Bosted</span>
+                        <span class="topic-count"><%= topicStats.bosted %></span>
+                    </li>
+                    <li>
+                        <span>Fritid</span>
+                        <span class="topic-count"><%= topicStats.fritid %></span>
+                    </li>
+                </ul>
             </section>
 
 
@@ -83,6 +104,23 @@
 
             <section class="chat">
 
+                <div class="messages">
+
+                    <% if (messages.length === 0) { %>
+                        <div class="empty-state">
+                            <h2>Ingen spørgsmål endnu</h2>
+                            <p>Stil dit første spørgsmål herunder</p>
+                        </div>
+                    <% } %>
+
+                    <% for (const message of messages) { %>
+                        <div class="message message-<%= message.type === 'question' ? 'user' : 'bot' %>">
+                            <p><%= message.text %></p>
+                        </div>
+                    <% } %>
+
+                </div>
+
 
                 <!-- =================================
                      QUESTION FORM
@@ -92,8 +130,14 @@
 
                     <div class="input-container">
 
-                        <label for="question">Stil dit spørgsmål her:</label>
-                        <input id="question" name="question" type="text" />
+                        <label class="sr-only" for="question">Stil dit spørgsmål her:</label>
+                        <input
+                            id="question"
+                            name="question"
+                            type="text"
+                            placeholder="Stil dit spørgsmål her..."
+                            autocomplete="off"
+                        />
 
                         <button class="send-button" type="submit">
                             <span>Send</span>
@@ -105,24 +149,11 @@
 
                     </div>
 
+                    <% if (error) { %>
+                        <p class="form-error" role="alert"><%= error %></p>
+                    <% } %>
+
                 </form>
-
-                <% if (error) { %>
-                    <p role="alert"><%= error %></p>
-                <% } %>
-
-                <% for (const message of messages) { %>
-                    <article class="<%= message.type %>">
-                        <p><%= message.text %></p>
-                    </article>
-                <% } %>
-
-                <h2>Spørgsmål fordelt på emner</h2>
-                    <ul>
-                        <li>Navn: <%= topicStats.navn %></li>
-                        <li>Bosted: <%= topicStats.bosted %></li>
-                        <li>Fritid: <%= topicStats.fritid %></li>
-                    </ul>
 
             </section>
 

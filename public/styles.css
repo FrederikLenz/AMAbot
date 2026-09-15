@@ -22,6 +22,28 @@ body {
 
 
 /* =================================
+   ACCESSIBILITY HELPERS
+================================= */
+
+.sr-only {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+
+    border: 0;
+}
+
+
+/* =================================
    APP
 ================================= */
 
@@ -126,6 +148,68 @@ body {
     height: 100%;
 
     object-fit: cover;
+}
+
+
+/* =================================
+   TOPIC STATS
+================================= */
+
+.topic-stats {
+    padding: 40px 26px 0;
+}
+
+.topic-stats h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    color: #77777F;
+
+    margin-bottom: 14px;
+}
+
+.topic-stats ul {
+    list-style: none;
+}
+
+.topic-stats li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 11px 0;
+
+    font-size: 15px;
+
+    color: #AAA8A5;
+
+    border-bottom: 1px solid #1C1C20;
+}
+
+.topic-stats li:last-child {
+    border-bottom: none;
+}
+
+.topic-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 26px;
+    height: 26px;
+
+    padding: 0 8px;
+
+    border-radius: 8px;
+
+    background-color: #19191D;
+
+    color: #C9A96E;
+
+    font-size: 13px;
+    font-weight: 600;
 }
 
 
@@ -277,8 +361,12 @@ body {
 ================================= */
 
 .messages {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
     width: 100%;
-    max-width: 1000px;
+    max-width: 1100px;
 
     height: 100%;
 
@@ -294,8 +382,6 @@ body {
 
 .message {
     display: flex;
-
-    margin-bottom: 28px;
 }
 
 
@@ -306,15 +392,17 @@ body {
 }
 
 .message-user p {
-    max-width: 70%;
+    max-width: 60%;
 
-    padding: 13px 18px;
+    padding: 14px 20px;
 
-    border-radius: 16px 16px 4px 16px;
+    border-radius: 20px 20px 4px 20px;
 
-    background-color: #1C1C20;
+    background-color: #C9A96E;
 
-    color: #D2D0CC;
+    color: #17140F;
+
+    line-height: 1.45;
 }
 
 
@@ -325,15 +413,17 @@ body {
 }
 
 .message-bot p {
-    max-width: 70%;
+    max-width: 60%;
 
-    padding: 13px 18px;
+    padding: 14px 20px;
 
-    border-radius: 16px 16px 16px 4px;
+    border-radius: 20px 20px 20px 4px;
 
-    background-color: #151518;
+    background-color: #1C1C20;
 
-    color: #AAA8A5;
+    color: #D2D0CC;
+
+    line-height: 1.45;
 }
 
 
@@ -349,9 +439,9 @@ body {
 
     width: min(982px, calc(100% - 80px));
 
-    transform: translateX(-50%);
-
     text-align: center;
+
+    transform: translateX(-50%);
 }
 
 
@@ -376,7 +466,7 @@ body {
 
 
 /* =================================
-   TEXTAREA
+   TEXTAREA / INPUT
 ================================= */
 
 #question {
@@ -384,43 +474,38 @@ body {
 
     width: 100%;
 
-    min-height: 50px;
+    height: 50px;
 
     padding: 15px 15px 15px 2px;
 
     border: none;
     outline: none;
 
-    resize: none;
-
     background-color: transparent;
 
     color: #D5D2CE !important;
 
     font-size: 19px;
+    font-family: inherit;
 }
 
-#question, label {
+#question::placeholder {
     color: #505057;
 }
 
-.messages {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+
+/* =================================
+   FORM ERROR
+================================= */
+
+.form-error {
+    margin-top: 12px;
+
+    font-size: 14px;
+
+    color: #E0857D;
 }
 
-.question {
-  align-self: flex-end;
-  color: #505057;
-  background-color: #C9A96E;
-}
-
-.answer {
-  align-self: flex-start;
-  color: #505057;
-  background-color: #C9A96E;
-}
 
 /* =================================
    SEND BUTTON

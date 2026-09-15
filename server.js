@@ -108,6 +108,13 @@ app.post("/ask", async (request, response) => {
   response.render("index", { messages, error, topicStats });
 });
 
+app.post("/reset", async (request, response) => {
+  await saveMessages([]);
+  resetTopicStats();
+ 
+  response.redirect("/");
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
