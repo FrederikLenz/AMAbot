@@ -8,6 +8,7 @@
     <title>AMA</title>
 
     <link rel="stylesheet" href="/styles.css">
+    <script src="scripts.js" defer></script>
 </head>
 
 <body>
@@ -66,12 +67,14 @@
             <!-- New session -->
             <div class="sidebar-footer">
 
-                <button
-                    class="new-session-button"
-                    type="button"
-                >
-                    New session
-                </button>
+                <form action="/reset" method="POST">
+                    <button
+                        class="new-session-button"
+                        type="submit"
+                    >
+                        New session
+                    </button>
+                </form>
 
             </div>
 
@@ -131,14 +134,8 @@
                     <div class="input-container">
 
                         <label class="sr-only" for="question">Stil dit spørgsmål her:</label>
-                        <input
-                            id="question"
-                            name="question"
-                            type="text"
-                            placeholder="Stil dit spørgsmål her..."
-                            autocomplete="off"
-                        />
-
+                        <input id="question" name="question" type="text" placeholder="Stil dit spørgsmål her..." autocomplete="off"/>
+                        
                         <button class="send-button" type="submit">
                             <span>Send</span>
 
@@ -153,7 +150,13 @@
                         <p class="form-error" role="alert"><%= error %></p>
                     <% } %>
 
+                    <div class="char-counter">
+                        <span id="char-count">0</span>/280
+                    </div>
+
                 </form>
+                
+                
 
             </section>
 

@@ -76,6 +76,12 @@ const topicStats = {
   fritid: 0
 };
 
+function resetTopicStats() {
+  topicStats.navn = 0;
+  topicStats.bosted = 0;
+  topicStats.fritid = 0;
+}
+
 // ---- Routes ---- //
 
 app.get("/", async (request, response) => {
@@ -111,7 +117,7 @@ app.post("/ask", async (request, response) => {
 app.post("/reset", async (request, response) => {
   await saveMessages([]);
   resetTopicStats();
- 
+
   response.redirect("/");
 });
 

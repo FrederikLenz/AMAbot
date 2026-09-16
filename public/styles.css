@@ -560,3 +560,12 @@ body {
 
     color: #29292F;
 }
+
+
+.char-counter {
+text-align: center;
+font-size: 0.9em;
+color: #666;
+}
+.char-counter.warning { color: orange; }
+.char-counter.danger { color: red; }
