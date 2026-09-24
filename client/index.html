@@ -8,7 +8,7 @@
     <title>AMA</title>
 
     <link rel="stylesheet" href="/styles.css">
-    <script src="scripts.js" defer></script>
+    <script src="/scripts.js" defer></script>
 </head>
 
 <body>
@@ -50,15 +50,15 @@
                 <ul>
                     <li>
                         <span>Navn</span>
-                        <span class="topic-count"><%= topicStats.navn %></span>
+                        <span class="topic-count"></span>
                     </li>
                     <li>
                         <span>Bosted</span>
-                        <span class="topic-count"><%= topicStats.bosted %></span>
+                        <span class="topic-count"></span>
                     </li>
                     <li>
                         <span>Fritid</span>
-                        <span class="topic-count"><%= topicStats.fritid %></span>
+                        <span class="topic-count"></span>
                     </li>
                 </ul>
             </section>
@@ -109,18 +109,14 @@
 
                 <div class="messages">
 
-                    <% if (messages.length === 0) { %>
                         <div class="empty-state">
                             <h2>Ingen spørgsmål endnu</h2>
                             <p>Stil dit første spørgsmål herunder</p>
                         </div>
-                    <% } %>
 
-                    <% for (const message of messages) { %>
-                        <div class="message message-<%= message.type === 'question' ? 'user' : 'bot' %>">
-                            <p><%= message.text %></p>
+                        <div class="message message-">
+                            <p></p>
                         </div>
-                    <% } %>
 
                 </div>
 
@@ -146,9 +142,7 @@
 
                     </div>
 
-                    <% if (error) { %>
-                        <p class="form-error" role="alert"><%= error %></p>
-                    <% } %>
+                        <p class="form-error" role="alert"></p>
 
                     <div class="char-counter">
                         <span id="char-count">0</span>/280
