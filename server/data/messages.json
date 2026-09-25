@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "type": "question",
+    "text": "Hvad hedder du?",
+    "createdAt": "2026-09-24T21:00:03.370Z"
+  },
+  {
+    "type": "answer",
+    "text": "Jeg hedder Frederik. Hvad vil du ellers vide om mig?",
+    "createdAt": "2026-09-24T21:00:03.376Z"
+  }
+]
