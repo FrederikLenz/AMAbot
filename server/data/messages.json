@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "type": "question",
+    "text": "&lt;img src=x onerror=&quot;alert(&#039;hacked&#039;)&quot;&gt;",
+    "createdAt": "2026-09-29T20:50:33.240Z"
+  },
+  {
+    "type": "answer",
+    "text": "Det kender jeg ikke svaret på endnu.",
+    "createdAt": "2026-09-29T20:50:33.240Z"
+  }
+]

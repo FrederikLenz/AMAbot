@@ -4,19 +4,28 @@ import { findBestAnswer } from "./answers.js";
 
 const router = express.Router();
 
-
+function escapeHtml(text) {
+  return text
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
 export async function loadMessages() {
-  const data = await fs.readFile("./data/messages.json", "utf8");
-  return JSON.parse(data);
+  try {
+    const data = await fs.readFile("./data/messages.json", "utf8");
+    return JSON.parse(data);
+  } catch (error) {
+    throw new Error("Kunne ikke læse beskeder", { cause: error });
+  }
 }
 
 export async function saveMessages(messages) {
   const json = JSON.stringify(messages, null, 2);
   await fs.writeFile("./data/messages.json", json);
 }
-
-
 
 router.get("/", async (request, response) => {
   const messages = await loadMessages();
@@ -25,38 +34,35 @@ router.get("/", async (request, response) => {
 });
 
 router.post("/", async (request, response) => {
-  const question = (request.body.question || "").trim();
+  const messages = await loadMessages();
+  const question = request.body.question.trim();
 
   if (!question) {
-    response.json({ error: "Skriv et spørgsmål, før du sender." });
+    response.status(400).json({ error: "Skriv et spørgsmål, før du sender." });
     return;
   }
 
   if (question.length > 280) {
-    response.json({ error: "Spørgsmålet må højst være 280 tegn." });
+    response.status(400).json({ error: "Spørgsmålet må højst være 280 tegn." });
     return;
   }
 
-  const messages = await loadMessages();
-
-  const message = { type: "question", text: question, createdAt: new Date().toISOString() };
+  const message = { type: "question", text: escapeHtml(question), createdAt: new Date().toISOString() };
   messages.push(message);
 
   const result = await findBestAnswer(question);
-  const answerMessage = { type: "answer", text: result.answer, createdAt: new Date().toISOString() };
+  const answerMessage = { type: "answer", text: escapeHtml(result.answer), createdAt: new Date().toISOString() };
   messages.push(answerMessage);
 
   await saveMessages(messages);
 
-  response.json({ question: message, answer: answerMessage });
+  response.status(201).json({ question: message, answer: answerMessage });
 });
 
 router.delete("/", async (request, response) => {
   await saveMessages([]);
 
-  response.send();
+  response.status(204).send();
 });
-
-
 
 export default router;
