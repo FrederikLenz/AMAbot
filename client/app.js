@@ -3,15 +3,24 @@ const messagesContainer = document.querySelector("#messages");
 const questionForm = document.querySelector("#question-form");
 const questionInput = document.querySelector("#question");
 const clearMessagesButton = document.querySelector("#clear-messages-button");
+const emptyState = document.querySelector("#empty-state");
+const formError = document.querySelector(".form-error");
+
+function updateEmptyState() {
+  emptyState.hidden = messagesContainer.children.length > 0;
+}
 
 function displayMessage(message) {
+  const cssClass = message.type === "question" ? "message-user" : "message-bot";
+
   const html = /*html*/ `
-    <article class="${message.type}">
+    <div class="message ${cssClass}">
       <p>${message.text}</p>
-    </article>`;
+    </div>`;
 
   messagesContainer.insertAdjacentHTML("beforeend", html);
   messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  updateEmptyState();
 }
 
 async function getMessages() {
@@ -21,15 +30,18 @@ async function getMessages() {
   for (const message of messages) {
     displayMessage(message);
   }
+
+  updateEmptyState();
 }
 
 getMessages();
-
 
 questionForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const question = questionInput.value.trim();
+
+  if (!question) return;
 
   const response = await fetch(`${API_URL}/messages`, {
     method: "POST",
@@ -39,13 +51,21 @@ questionForm.addEventListener("submit", async (event) => {
 
   const data = await response.json();
 
+  if (data.error) {
+    formError.textContent = data.error;
+    return;
+  }
+
+  formError.textContent = "";
   displayMessage(data.question);
   displayMessage(data.answer);
 
   questionInput.value = "";
+  questionInput.dispatchEvent(new Event("input"));
 });
 
 clearMessagesButton.addEventListener("click", async () => {
   await fetch(`${API_URL}/messages`, { method: "DELETE" });
   messagesContainer.innerHTML = "";
+  updateEmptyState();
 });

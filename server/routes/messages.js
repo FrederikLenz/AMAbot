@@ -25,13 +25,19 @@ router.get("/", async (request, response) => {
 });
 
 router.post("/", async (request, response) => {
-  const messages = await loadMessages();
-  const question = request.body.question.trim();
+  const question = (request.body.question || "").trim();
 
   if (!question) {
     response.json({ error: "Skriv et spørgsmål, før du sender." });
     return;
   }
+
+  if (question.length > 280) {
+    response.json({ error: "Spørgsmålet må højst være 280 tegn." });
+    return;
+  }
+
+  const messages = await loadMessages();
 
   const message = { type: "question", text: question, createdAt: new Date().toISOString() };
   messages.push(message);

@@ -569,3 +569,11 @@ color: #666;
 }
 .char-counter.warning { color: orange; }
 .char-counter.danger { color: red; }
+
+.empty-state[hidden] {
+    display: none;
+}
+
+.form-error:empty {
+    display: none;
+}
