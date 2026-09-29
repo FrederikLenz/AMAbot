@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import express from "express";
 import path from "node:path";
+import cors from "cors";
 import { fileURLToPath } from "node:url";
 import messagesRouter from "./routes/messages.js";
 import answersRouter from "./routes/answers.js";
@@ -12,9 +13,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../client")));
 
+app.use(cors());
+
 app.use("/messages", messagesRouter);
 app.use("/answers", answersRouter);
-
 
 const topicStats = {
   navn: 0,

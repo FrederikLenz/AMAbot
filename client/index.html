@@ -7,8 +7,9 @@
 
     <title>AMA</title>
 
-    <link rel="stylesheet" href="/styles.css">
-    <script src="/scripts.js" defer></script>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./scripts.js" defer></script>
+    <script src="./app.js" defer></script>
 </head>
 
 <body>
@@ -38,7 +39,7 @@
             <!-- Host profile -->
             <section class="profile">
                 <div class="profile-image-wrapper">
-                    <img class="profile-image" src="/images/cæsar.jpg" alt="Profile picture">
+                    <img class="profile-image" src="./images/cæsar.jpg" alt="Profile picture">
                 </div>
             </section>
 
@@ -67,14 +68,7 @@
             <!-- New session -->
             <div class="sidebar-footer">
 
-                <form action="/messages" method="DELETE">
-                    <button
-                        class="new-session-button"
-                        type="submit"
-                    >
-                        New session
-                    </button>
-                </form>
+                    <button type="button" id="clear-messages-button">Ryd beskeder</button>
 
             </div>
 
@@ -107,14 +101,18 @@
 
             <section class="chat">
 
-                <div class="messages">
+                <div id="messages" class="messages">
 
                         <div class="empty-state">
                             <h2>Ingen spørgsmål endnu</h2>
                             <p>Stil dit første spørgsmål herunder</p>
                         </div>
 
-                        <div class="message message-">
+                        <div class="message message-user">
+                            <p></p>
+                        </div>
+
+                        <div class="message message-bot">
                             <p></p>
                         </div>
 
@@ -125,7 +123,7 @@
                      QUESTION FORM
                 ================================== -->
 
-                <form class="question-form" action="/ask" method="POST">
+                <form id="question-form" class="question-form" action="/ask" method="POST">
 
                     <div class="input-container">
 
